@@ -1,0 +1,113 @@
+@import "_globals.css";
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "Rubik";
+	box-sizing: border-box;
+}
+
+body {
+	background-color: var(--background-color);
+}
+
+main {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	border-radius: var(--border-radius);
+}
+
+.tv-container {
+    display: flex;
+	flex-wrap: wrap;
+	width: 60%;
+}
+
+.tvShow {
+    width: 138px;
+}
+
+.tvShow img {
+    width: 100%;
+    opacity: 0.5;
+}
+
+.login-container {
+	background-color: var(--primary-color);
+	border-radius: var(--border-radius);
+	padding: 30px;
+	width: 70%;
+	margin-left: 70px;
+	box-shadow: 0px 10px 40px #00000056;
+}
+
+.login-container img {
+	width: 20%;
+}
+
+.login-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.login-header h1 {
+	color: var(--offwhite);
+	font-size: 28px;
+	margin-top: 12px;
+}
+
+.login-texto {
+	width: 100%;
+	margin: 10px 0px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.login-texto input {
+	width: 100%;
+	border: none; 
+	border-radius: 10px;
+	background: #838383;
+	color: var(--offwhite);
+	padding: 15px;
+	box-shadow: 0px 10px 40px #00000056;
+	transition: 0.4s,
+}
+
+
+.login-texto label {
+	color: var(--offwhite);
+	margin-bottom: 10px;
+}
+
+.login-texto input::placeholder {
+	color: #f0ffff94;
+}
+
+form input[type="submit"] {
+	width: 100%;
+	padding: 16px 0px;
+	margin: 25px 0px;
+	border: none;
+	border-radius: 8px;
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 3px;
+	color: var(--background-color);
+	background-color: var(--highlight-color);
+	cursor: pointer;
+	box-shadow: 0px 10px 40px -12px #00000056;
+}
+
+.err-msg {
+	padding: 10px 15px;
+	background-color: white;
+	border-radius: 8px;
+	margin-bottom: 15px;
+	color: red;
+	box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}

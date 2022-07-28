@@ -1,0 +1,177 @@
+@import "_globals.css";
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: var(--background-color);
+	font-family: "Rubik";
+}
+
+.main-container {
+	display: flex;
+	margin: 50px;
+}
+
+.profile-card {
+	background-color: var(--primary-color);
+	width: 70px;
+	height: 550px;
+	border-radius: var(--border-radius);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+}
+
+.profile-card img {
+	width: 30px;
+	border-radius: 50%;
+	border: 2px solid white;
+}
+
+.user-options {
+	margin-top: 20px;
+	height: 80%;
+}
+
+.profile-card li {
+	list-style: none;
+	padding-top: 5px;
+}
+
+.profile-card .fa-solid {
+	color: white;
+	padding: 15px;
+	border-radius: 5px;
+}
+
+.profile-card a:hover .fa-solid {
+	background-color: var(--highlight-color);
+	color: var(--primary-color);
+}
+
+form {
+	background-color: lightgray;
+	min-width: 220px;
+	width: 64%;
+	height: 50px;
+	border-radius: var(--border-radius);
+	display: flex;
+	align-items: center;
+}
+
+input {
+	all: unset;
+	font-size: 17px;
+	font-family: "Rubik";
+	padding: 20px;
+	width: 100%;
+	height: 100%;
+}
+
+button {
+	all: unset;
+	cursor: pointer;
+	width: 50px;
+	height: 50px;
+	color: gray;
+	opacity: 0.7;
+	fill: currentColor;
+	width: 40px;
+	height: 40px;
+	padding: 10px;
+}
+
+.infos {
+	margin-left: 50px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+.infos h1 {
+	padding-top: 20px;
+	color: white;
+}
+
+.tvShow-container {
+	padding-top: 20px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.tvShow {
+	width: 220px;
+	border-radius: var(--border-radius);
+	margin: 0 16px 16px 0;
+	box-shadow: 0.2px 4px 5px rgba(0, 0, 0, 0.1);
+	background-color: var(--lighter-blue);
+	overflow: hidden;
+	position: relative;
+}
+
+.tvShow img {
+	width: 100%;
+}
+
+.tvShow h3 {
+	margin-right: 5px;
+	font-size: 16px;
+}
+
+.tvShow-info {
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 8px 16px 16px;
+	letter-spacing: 0.5px;
+}
+
+.tvShow-info span {
+	background-color: var(--primary-color);
+	padding: 4px 8px;
+	border-radius: 4px;
+	font-weight: bold;
+	opacity: 0.8;
+}
+
+.tvShow-info span.green {
+	color: lightgreen;
+}
+
+.tvShow-info span.orange {
+	color: orange;
+}
+
+.tvShow-info span.red {
+	color: darkred;
+}
+
+.tvShow-overview {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: white;
+	padding: 16px;
+	max-height: 100%;
+	transform: translateY(101%);
+	transition: transform 0.3s ease-in;
+}
+
+.tvShow:hover .tvShow-overview {
+	transform: translateY(0);
+}
+
+.tvShow-overview p {
+	font-size: 14px;
+}
+
+.poster-card img {
+	height: 250px;
+}

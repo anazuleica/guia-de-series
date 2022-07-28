@@ -1,0 +1,149 @@
+@import "_globals.css";
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: var(--background-color);
+	font-family: "Rubik";
+}
+
+.main-container {
+	display: flex;
+	margin: 50px;
+}
+
+.profile-card {
+	background-color: var(--primary-color);
+	width: 70px;
+	height: 550px;
+	border-radius: var(--border-radius);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+}
+
+.profile-card img {
+	width: 30px;
+	border-radius: 50%;
+	border: 2px solid white;
+}
+
+.user-options {
+	margin-top: 20px;
+	height: 80%;
+}
+
+.profile-card li {
+	list-style: none;
+	padding-top: 5px;
+}
+
+.profile-card .fa-solid {
+	color: white;
+	padding: 15px;
+	border-radius: 5px;
+}
+
+.profile-card a:hover .fa-solid {
+	background-color: var(--highlight-color);
+	color: var(--primary-color);
+}
+
+
+.infos {
+	margin-left: 50px;
+	display: flex;
+	flex-direction: column;
+}
+
+.my-series {
+	margin-bottom: 50px;
+}
+
+.my-series h3 {
+	font-size: 18px;
+	color: white;
+	margin-bottom: 10px;
+}
+
+.poster-info img {
+	height: 120px;
+	border-radius: 5px;
+}
+
+.poster-info {
+	display: flex;
+	padding: 10px;
+	margin: 0 20px 20px 0;
+	background-color: whitesmoke;
+	width: 300px;
+	border-radius: 5px;
+	box-shadow: 0px 10px 40px #00000056;
+
+}
+
+.poster-info h4 {
+	font-size: 14px;
+}
+
+.poster-info p {
+	font-weight: lighter;
+	font-size: 14px;
+	padding-top: 2px;
+}
+
+.card-geral {
+	padding: 0px 12px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.vistas {
+	display: flex;
+}
+
+.barra-progresso {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+}
+
+.barra-total {
+	background-color: var(--background-color);
+	border-radius: var(--border-radius);
+	width: 150px;
+	height: 10px;
+}
+
+.barra-visto {
+	background-color: var(--lighter-blue);
+	border-radius: var(--border-radius);
+	width: 10%;
+	height: 100%;
+}
+
+.barra-progresso p {
+	font-size: 10px;
+	margin-left: 5px;
+}
+
+.card-geral button {
+	all: unset;
+	background-color: var(--highlight-color);
+	color: black;
+	font-size: 12px;
+	width: 50%;
+	height: 25px;
+	border-radius: 5px;
+	padding: 0 2px;
+	text-align: center;
+	cursor: pointer;
+}
+
+

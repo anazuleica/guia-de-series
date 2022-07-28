@@ -1,0 +1,239 @@
+@import "_globals.css";
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: var(--background-color);
+	font-family: "Rubik";
+}
+
+.main-container {
+	display: flex;
+	margin: 50px;
+}
+
+.profile-card {
+	background-color: var(--primary-color);
+	width: 70px;
+	height: 550px;
+	border-radius: var(--border-radius);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+}
+
+.profile-card img {
+	width: 30px;
+	border-radius: 50%;
+	border: 2px solid white;
+}
+
+.user-options {
+	margin-top: 20px;
+	height: 80%;
+}
+
+.profile-card li {
+	list-style: none;
+	padding-top: 5px;
+}
+
+.profile-card .fa-solid {
+	color: white;
+	padding: 15px;
+	border-radius: 5px;
+}
+
+.profile-card a:hover .fa-solid {
+	background-color: var(--highlight-color);
+	color: var(--primary-color);
+}
+
+.infos {
+	margin: 0px 50px;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.poster-container {
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+	position: relative;
+	border-radius: 10px;
+	box-shadow: 0px 10px 40px #58585856;
+}
+
+.poster-card img {
+	width: 100%;
+	transform: translateY(-20%);
+	opacity: 0.6;
+	position: relative;
+
+}
+
+.poster-title {
+	position: absolute;
+	z-index: 1;
+	padding: 10px;
+	color: white;
+	width: 60%;
+}
+
+.poster-title h1 {
+	font-size: 30px;
+}
+
+.poster-title a {
+	text-decoration: none;
+	color: white;
+}
+
+.poster-title a:hover {
+	color: var(--highlight-color)
+}
+
+.poster-title h3 {
+	font-weight: lighter;
+	padding-top: 5px;
+}
+
+.seasons {
+	display: flex;
+	flex-direction: column;
+	width: 20%;
+	margin-right: 20px;
+	margin-top: 20px;
+}
+
+.seasons a {
+	text-decoration: none;
+	color: white;
+	text-transform: uppercase;
+	font-weight: lighter;
+	font-size: 12px;
+	letter-spacing: 1px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid white;
+	line-height: 25px;
+}
+
+.seasons a:hover {
+	border-bottom: 1px solid var(--highlight-color);
+	color: var(--highlight-color);
+
+}
+
+.info-container {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+.about-card {
+	width: 80%;
+	background-color: white;
+	box-shadow: 0px 10px 40px #58585856;
+	border-radius: 10px;
+	padding: 20px;
+	margin-top: 20px;
+}
+
+.summary p {
+	margin: 10px 0px 15px 0px;
+}
+
+.summary span {
+	font-weight: lighter;
+	font-size: 16px;
+	margin-left: 5px;
+}
+
+.progress-bar {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+}
+
+.total-bar {
+	background-color: var(--background-color);
+	border-radius: var(--border-radius);
+	width: 150px;
+	height: 10px;
+}
+
+.watched-bar {
+	background-color: var(--lighter-blue);
+	border-radius: var(--border-radius);
+	width: 10%;
+	height: 100%;
+}
+
+.progress-bar p {
+	font-size: 12px;
+	margin-left: 5px;
+}
+
+
+.card {
+	padding: 20px 0px;
+	color: white;
+}
+
+.episodes-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.episodes-card h1 {
+	margin-bottom: 10px;
+}
+
+.episodes-card h3 {
+	font-size: 18px;
+}
+
+
+.episode {
+	background-color: white;
+	color: black;
+	margin: 10px 0px;
+	padding: 10px;
+	border-radius: 5px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.episode a {
+	text-decoration: none;
+	color: black;
+}
+
+.episode:hover {
+	background-color: var(--highlight-color);
+}
+
+.episode:hover button {
+	background-color: var(--highlight-color);
+}
+
+.episode button {
+	border: none;
+	cursor: pointer;
+	background-color: white;
+	padding: 0px 15px;
+	font-size: 18px;
+	opacity: 0.7;
+}
+
+.watched {
+	color: green;
+}
+

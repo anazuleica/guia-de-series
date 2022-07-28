@@ -1,0 +1,168 @@
+@import "_globals.css";
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: var(--background-color);
+	font-family: "Rubik";
+}
+
+.main-container {
+	display: flex;
+	justify-content: center;
+	margin-top: 100px;
+}
+
+.profile-card {
+	background-color: var(--primary-color);
+	border-radius: var(--border-radius);
+}
+
+.user-details {
+	background-color: var(--lighter-blue);
+	border-radius: var(--border-radius);
+	height: 230px;
+	width: 250px;
+	padding: 25px 25px;
+}
+
+.user-details img {
+	width: 100px;
+	border-radius: 50%;
+	border: 3px solid white;
+}
+
+.name {
+	font-weight: normal;
+	color: white;
+	padding-top: 15px;
+}
+
+.user-options ul {
+	list-style-type: none;
+	color: white;
+	font-weight: lighter;
+	color: white;
+	padding: 20px 25px;
+	font-size: 14px;
+}
+
+.user-options li {
+	padding-top: 5px;
+}
+
+.user-options li:last-child {
+	padding: 25px 0px 5px 0px;
+}
+
+.user-options a {
+	color: white;
+	text-decoration: none;
+}
+
+.user-options a:hover {
+	border-bottom: 1px solid white;
+}
+
+.infos {
+	display: flex;
+	flex-direction: column;
+}
+
+.info-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 50%;
+	width: 100%;
+	background-color: var(--highlight-color);
+	border-radius: var(--border-radius);
+	margin-left: 50px;
+}
+
+.info-card h1 {
+	font-size: 16px;
+	padding: 15px 20px;
+}
+
+.info-card a {
+	text-decoration: none;
+}
+
+.series-card {
+	background-color: var(--tv);
+	margin-bottom: 15px;
+}
+
+.info-card h1 {
+	color: var(--background-color);
+}
+
+.foreground {
+	background-color: var(--primary-color);
+	border-radius: var(--border-radius);
+	height: 80%;
+}
+
+.stats-card {
+	background-color: var(--stats);
+}
+
+.series-card h3 {
+	color: white;
+	font-weight: 400;
+	font-size: 16px;
+	padding-bottom: 10px;
+}
+
+.series-card span {
+	font-size: 14px;
+	color: var(--tv);
+}
+
+.series-card p {
+	font-size: 12px;
+	color: white;
+}
+
+.stats-card h3 {
+	font-weight: 400;
+	font-size: 42px;
+	color: var(--stats);
+}
+
+.stats-card p {
+	color: white;
+	font-size: 12px;
+}
+
+.card-box-row {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding: 15px;
+	margin-left: 5px;
+}
+
+.card-box {
+	width: 100px;
+	height: 75px;
+	margin-right: 40px;
+	margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 400px) {
+	.main-container {
+		flex-wrap: wrap;
+	}
+
+	.info-card {
+		margin-left: 0px;
+		margin-top: 20px;
+	}
+	
+}

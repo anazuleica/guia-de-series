@@ -3,7 +3,7 @@ const session = require("express-session");
 const hbs = require("express-handlebars");
 const { redirect } = require("express/lib/response");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 //Dotenv
 require("dotenv/config");

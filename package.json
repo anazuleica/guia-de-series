@@ -1,10 +1,10 @@
 {
-  "name": "teste",
+  "name": "guia-de-series",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index"
   },
   "author": "",
   "license": "ISC",

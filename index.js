@@ -12,13 +12,6 @@ require("dotenv/config");
 app.engine("hbs", hbs.engine({ extname: "hbs" }));
 app.set("view engine", "hbs");
 app.use(express.static(__dirname + "/public"));
-app.use(
-	session({
-		secret: process.env.pass,
-		resave: false,
-		saveUninitialized: true,
-	})
-);
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());

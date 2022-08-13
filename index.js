@@ -23,13 +23,13 @@ app.get("/", (req, res) => {
 	});
 });
 
-app.get("/login", (req, res) => {
+app.get("/login.hbs", (req, res) => {
 	res.render("Login", {
 		style: "login.css",
 	});
 });
 
-app.get("/series", (req, res) => {
+app.get("/series.hbs", (req, res) => {
 	res.render("Series", {
 		style: "series.css",
 	});

@@ -29,14 +29,14 @@ app.get("/login.hbs", (req, res) => {
 	});
 });
 
-app.get("/series.hbs", (req, res) => {
-	res.render("Series", {
+app.get("/series", (req, res) => {
+	res.render("series.hbs", {
 		style: "series.css",
 	});
 });
 
-app.get("/overview.hbs", (req, res) => {
-	res.render("Overview", {
+app.get("/overview", (req, res) => {
+	res.render("overview.hbs", {
 		style: "overview.css",
 	});
 });
@@ -48,19 +48,19 @@ app.get("/search", (req, res) => {
 });
 
 app.get("/:id", (req, res) => {
-	res.render("overview", {
+	res.render("overview.hbs", {
 		style: "overview.css",
 	});
 });
 
 app.get("/:id/season/:id", (req, res) => {
-	res.render("season", {
+	res.render("season.hbs", {
 		style: "../../../css/season.css",
 	});
 });
 
 app.get("/:id/season/:id/episode/:id", (req, res) => {
-	res.render("episode", {
+	res.render("episode.hbs", {
 		style: "../../../../../css/episode.css",
 	});
 });

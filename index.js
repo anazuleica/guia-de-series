@@ -35,32 +35,32 @@ app.get("/series", (req, res) => {
 	});
 });
 
-app.get("/overview", (req, res) => {
+app.get("/overview.hbs", (req, res) => {
 	res.render("Overview", {
 		style: "overview.css",
 	});
 });
 
-app.get("/search", (req, res) => {
-	res.render("Search", {
+app.get("/search.hbs", (req, res) => {
+	res.render("search", {
 		style: "search.css",
 	});
 });
 
 app.get("/:id", (req, res) => {
-	res.render("Overview", {
+	res.render("overview", {
 		style: "overview.css",
 	});
 });
 
 app.get("/:id/season/:id", (req, res) => {
-	res.render("Season", {
+	res.render("season", {
 		style: "../../../css/season.css",
 	});
 });
 
 app.get("/:id/season/:id/episode/:id", (req, res) => {
-	res.render("Episode", {
+	res.render("episode", {
 		style: "../../../../../css/episode.css",
 	});
 });

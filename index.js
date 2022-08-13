@@ -41,8 +41,8 @@ app.get("/overview.hbs", (req, res) => {
 	});
 });
 
-app.get("/search.hbs", (req, res) => {
-	res.render("search", {
+app.get("/search", (req, res) => {
+	res.render("search.hbs", {
 		style: "search.css",
 	});
 });

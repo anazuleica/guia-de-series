@@ -33,13 +33,13 @@ app.get("/", (req, res) => {
 });
 
 app.get("/login", (req, res) => {
-	res.render("Login.hbs", {
+	res.render("login.hbs", {
 		style: "login.css",
 	});
 });
 
 app.get("/register", (req, res) => {
-	res.render("Register.hbs", {
+	res.render("register.hbs", {
 		style: "register.css",
 	});
 });

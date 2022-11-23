@@ -102,10 +102,38 @@ const User = require("./public/models/user");
 
 //Register User
 app.post("/auth/register", async (req, res) => {
-	console.log(req.body);
-
 	const { username, password: PlainTextPassword } = req.body;
+
+	if (!username || typeof username !== "string") {
+		return res.json({ status: "error", error: "Nome de usuário inválido" });
+	}
+
+	if (!PlainTextPassword || typeof PlainTextPassword !== "string") {
+		return res.json({ status: "error", error: "Senha inválida" });
+	}
+
+	if (PlainTextPassword.length < 5) {
+		return res.json({
+			status: "error",
+			error: "A senha deve ter no mínimo 5 caracteres",
+		});
+	}
+
 	const password = await bcrypt.hash(PlainTextPassword, 10);
+
+	try {
+		const response = await User.create({
+			username,
+			password,
+		});
+		console.log("Usuário criado com sucesso", response);
+	} catch (error) {
+		if (error.code === 11000) {
+			//Usuário duplicado
+			return res.json({ status: "error", error: "Nome de usuário já existe" });
+		}
+		throw error;
+	}
 
 	res.json({ status: "ok" });
 });

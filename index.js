@@ -1,12 +1,21 @@
 const express = require("express");
 const session = require("express-session");
 const hbs = require("express-handlebars");
+const bodyParser = require("body-parser");
 const { redirect } = require("express/lib/response");
 const app = express();
 const port = process.env.PORT || 3000;
 
+//BodyParser
+app.use(bodyParser.json());
+
 //Dotenv
 require("dotenv/config");
+
+//Login
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const { default: mongoose } = require("mongoose");
 
 //Middleware
 app.engine("hbs", hbs.engine({ extname: "hbs" }));
@@ -23,9 +32,15 @@ app.get("/", (req, res) => {
 	});
 });
 
-app.get("/login.hbs", (req, res) => {
+app.get("/login", (req, res) => {
 	res.render("Login", {
 		style: "login.css",
+	});
+});
+
+app.get("/register", (req, res) => {
+	res.render("Register", {
+		style: "register.css",
 	});
 });
 
@@ -65,11 +80,37 @@ app.get("/:id/season/:id/episode/:id", (req, res) => {
 	});
 });
 
-app.use((req, res) => {
-	res.json("404");
+//Credentials
+const dbUser = process.env.DB_USER;
+const dbPassword = process.env.DB_PASS;
+
+mongoose
+	.connect(
+		`mongodb+srv://${dbUser}:${dbPassword}@cluster0.iqzkooa.mongodb.net/?retryWrites=true&w=majority`,
+		{
+			useNewUrlParser: true,
+			useUnifiedTopology: true,
+		}
+	)
+	.then(() => {
+		console.log("Conectado ao banco");
+	})
+	.catch((err) => console.log(err.message));
+
+//Models
+const User = require("./public/models/user");
+
+//Register User
+app.post("/auth/register", async (req, res) => {
+	console.log(req.body);
+
+	const { username, password: PlainTextPassword } = req.body;
+	const password = await bcrypt.hash(PlainTextPassword, 10);
+
+	res.json({ status: "ok" });
 });
 
 //Listen
 app.listen(port, () => {
-	console.log(`Server online on port ${port}`);
+	console.log("Server up at " + port);
 });

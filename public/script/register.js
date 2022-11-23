@@ -32,3 +32,26 @@ function showTv(data) {
 		container.appendChild(tvShowEl);
 	});
 }
+
+//Register Form
+const form = document.getElementById("register-form");
+form.addEventListener("submit", registerUser);
+
+async function registerUser(event) {
+	event.preventDefault();
+	const username = document.getElementById("username").value;
+	const password = document.getElementById("password").value;
+
+	const result = await fetch("/auth/register", {
+		method: "POST",
+		headers: {
+			"content-type": "application/json",
+		},
+		body: JSON.stringify({
+			username,
+			password,
+		}),
+	}).then((res) => res.json());
+
+	console.log(result);
+}

@@ -54,7 +54,7 @@ async function registerUser(event) {
 	}).then((res) => res.json());
 
 	if (result.status === "ok") {
-		//ok
+		alert("Usuário criado!");
 	} else {
 		alert(result.error);
 	}

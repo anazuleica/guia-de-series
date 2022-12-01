@@ -32,3 +32,30 @@ function showTv(data) {
 		container.appendChild(tvShowEl);
 	});
 }
+
+//Login Form
+const form = document.getElementById("login-form");
+form.addEventListener("submit", loginUser);
+
+async function loginUser(event) {
+	event.preventDefault();
+	const username = document.getElementById("username").value;
+	const password = document.getElementById("password").value;
+
+	const result = await fetch("/auth/login", {
+		method: "POST",
+		headers: {
+			"content-type": "application/json",
+		},
+		body: JSON.stringify({
+			username,
+			password,
+		}),
+	}).then((res) => res.json());
+
+	if (result.status === "ok") {
+		alert("Sucesso");
+	} else {
+		alert(result.error);
+	}
+}

@@ -3,23 +3,24 @@
 		<img src="" alt="" />
 	</div>
 
-	<form action="/login">
+	<form id="login-form">
 		<div class="login-container">
 			<div class="login-card">
 				<div class="login-header">
 					<img src="/images/tv-logo2.png" alt="" />
 					<h1>Guia de Séries</h1>
 				</div>
+
 				<div class="login-texto">
-					<label for="usuario">Usuário</label>
-					<input type="text" name="username" placeholder="Usuário" required />
+					<label form="usuario">Usuário</label>
+					<input type="text" id="username" placeholder="Usuário" required />
 				</div>
 
 				<div class="login-texto">
-					<label for="senha">Senha</label>
-					<input type="password" name="password" placeholder="Senha" required />
+					<label form="senha">Senha</label>
+					<input type="password" id="password" placeholder="Senha" required />
 				</div>
-				<input type="submit" value="Login" />
+				<input type="submit" value="Entrar" />
 				<p class="register">Não é um usuário?
 					<a href="/register">Cadastre-se</a></p>
 			</div>

@@ -15,7 +15,7 @@ require("dotenv/config");
 //Login
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { default: mongoose } = require("mongoose");
+const mongoose = require("mongoose");
 
 //Middleware
 app.engine("hbs", hbs.engine({ extname: "hbs" }));
@@ -100,8 +100,32 @@ mongoose
 //Models
 const User = require("./public/models/user");
 
+//Login User
+app.post("/auth/login", async (req, res) => {
+	const { username, password } = req.body;
+
+	const user = await User.findOne({ username }).lean();
+
+	if (!user) {
+		return res.json({ status: "error", error: "Usuário não encontrado" });
+	}
+
+	if (await bcrypt.compare(password, user.password)) {
+		const token = jwt.sign(
+			{
+				id: user._id,
+				username: user.username,
+			},
+			process.env.JWT_SECRET
+		);
+		return res.json({ status: "ok", data: token });
+	}
+
+	res.json({ status: "error", error: "Usuário ou senha inválidos" });
+});
+
 //Register User
-app.post("/auth/register", async (req, res) => {
+app.post("/register", async (req, res) => {
 	const { username, password: PlainTextPassword } = req.body;
 
 	if (!username || typeof username !== "string") {

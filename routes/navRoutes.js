@@ -22,9 +22,13 @@ router.get("/search", requireAuth, (req, res) => {
 });
 
 router.get("/:id", requireAuth, (req, res) => {
-	res.render("overview.hbs", {
-		style: "overview.css",
-	});
+	if (res.status(400)) {
+		res.render("invalid.hbs");
+	} else {
+		res.render("overview.hbs", {
+			style: "overview.css",
+		});
+	}
 });
 
 router.get("/:id/season/:id", requireAuth, (req, res) => {

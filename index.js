@@ -10,7 +10,12 @@ const { requireAuth } = require("./middlewares/authMiddleware");
 require("dotenv").config();
 
 // Connect to DB
-mongoose.connect(process.env.DB_URL, () => console.log("DB Connected"));
+dbUser = process.env.DB_USER;
+dbPass = process.env.DB_PASSWORD;
+mongoose.connect(
+	`mongodb+srv://${dbUser}:${dbPass}@cluster0.iqzkooa.mongodb.net/?retryWrites=true&w=majority`,
+	() => console.log("DB Connected")
+);
 
 // Middleware
 app.engine("hbs", hbs.engine({ extname: "hbs" }));

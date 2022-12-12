@@ -1,0 +1,33 @@
+<main>
+	<div class="tv-container" id="tv-container">
+		<img src="" alt="" />
+	</div>
+
+	<form action="/register">
+		<div class="register-container">
+			<div class="register-card">
+				<div class="register-header">
+					<img src="/images/tv-logo2.png" alt="" />
+					<h1>Guia de Séries</h1>
+				</div>
+
+				<div class="register-texto">
+					<label form="usuario">Usuário</label>
+					<input type="text" id="username" placeholder="Usuário" required />
+					<div class="username error"></div>
+				</div>
+
+				<div class="register-texto">
+					<label form="senha">Senha</label>
+					<input type="password" id="password" placeholder="Senha" required />
+					<div class="password error"></div>
+				</div>
+
+				<input type="submit" value="Cadastre-se" />
+				<p class="register">Já é um usuário?
+					<a href="/login">Faça login</a></p>
+			</div>
+		</div>
+	</form>
+</main>
+<script type="text/javascript" src="/script/register.js"></script>

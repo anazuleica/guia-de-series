@@ -35,7 +35,9 @@ function showTv(data) {
 		}" alt="${name}"></a>
         <div class="tvShow-info">
             <h3>${name}</h3>
-            <span class="${getColor(vote_average)}">${vote_average}</span></div>
+            <span class="${getColor(vote_average)}">${vote_average.toFixed(
+			1
+		)}</span></div>
         <div class="tvShow-overview">
             <h3>Overview</h3>
             <p>${overview.substring(0, 200) + "..."}</p></div>

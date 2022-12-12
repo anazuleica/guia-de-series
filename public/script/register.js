@@ -33,7 +33,7 @@ function showTv(data) {
 	});
 }
 
-// Form Login
+// Form Cadastro
 
 const form = document.querySelector("form");
 const usernameError = document.querySelector(".username.error");
@@ -50,7 +50,7 @@ form.addEventListener("submit", async (e) => {
 	const username = form.username.value;
 	const password = form.password.value;
 	try {
-		const res = await fetch("/login", {
+		const res = await fetch("/register", {
 			method: "POST",
 			body: JSON.stringify({ username, password }),
 			headers: { "Content-Type": "application/json" },

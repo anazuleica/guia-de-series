@@ -33,29 +33,40 @@ function showTv(data) {
 	});
 }
 
-//Login Form
-const form = document.getElementById("login-form");
-form.addEventListener("submit", loginUser);
+// Form Login
 
-async function loginUser(event) {
-	event.preventDefault();
-	const username = document.getElementById("username").value;
-	const password = document.getElementById("password").value;
+const form = document.querySelector("form");
+const usernameError = document.querySelector(".username.error");
+const passwordError = document.querySelector(".password.error");
 
-	const result = await fetch("/auth/login", {
-		method: "POST",
-		headers: {
-			"content-type": "application/json",
-		},
-		body: JSON.stringify({
-			username,
-			password,
-		}),
-	}).then((res) => res.json());
+form.addEventListener("submit", async (e) => {
+	e.preventDefault();
 
-	if (result.status === "ok") {
-		alert("Sucesso");
-	} else {
-		alert(result.error);
+	// Reseta Erros
+	usernameError.textContent = "";
+	passwordError.textContent = "";
+
+	// Captura Valores
+	const username = form.username.value;
+	const password = form.password.value;
+	try {
+		const res = await fetch("/login", {
+			method: "POST",
+			body: JSON.stringify({ username, password }),
+			headers: { "Content-Type": "application/json" },
+		});
+		const data = await res.json();
+		console.log(data);
+
+		if (data.errors) {
+			usernameError.textContent = data.errors.username;
+			passwordError.textContent = data.errors.password;
+		}
+
+		if (data.user) {
+			location.assign("/");
+		}
+	} catch (err) {
+		console.log(err);
 	}
-}
+});

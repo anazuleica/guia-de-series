@@ -1,166 +1,36 @@
 const express = require("express");
-const session = require("express-session");
 const hbs = require("express-handlebars");
-const mongoose = require("mongoose");
-const { redirect } = require("express/lib/response");
 const app = express();
-const port = process.env.PORT || 3000;
+const mongoose = require("mongoose");
+const authRoutes = require("./routes/authRoutes");
+const navRoutes = require("./routes/navRoutes");
+const cookieParser = require("cookie-parser");
+const { requireAuth } = require("./middlewares/authMiddleware");
 
-//Dotenv
-require("dotenv/config");
+require("dotenv").config();
 
-//Login
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const passport = require("passport");
-var crypto = require("crypto");
+// Connect to DB
+mongoose.connect(process.env.DB_URL, () => console.log("DB Connected"));
 
-//Middleware
+// Middleware
 app.engine("hbs", hbs.engine({ extname: "hbs" }));
 app.set("view engine", "hbs");
 app.use(express.static(__dirname + "/public"));
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-//Credentials Mongoose
-const dbUser = process.env.DB_USER;
-const dbPassword = process.env.DB_PASS;
+app.use(cookieParser());
 
-mongoose
-	.connect(
-		`mongodb+srv://${dbUser}:${dbPassword}@cluster0.iqzkooa.mongodb.net/?retryWrites=true&w=majority`,
-		{
-			useNewUrlParser: true,
-			useUnifiedTopology: true,
-		}
-	)
-	.then(() => {
-		console.log("Conectado ao banco");
-	})
-	.catch((err) => console.log(err.message));
+// Import Routes
+app.use(authRoutes);
+app.use(navRoutes);
 
-//Models
-const User = require("./public/models/user");
-
-//Login User
-app.post("/auth/login", async (req, res) => {
-	const { username, password } = req.body;
-
-	const user = await User.findOne({ username }).lean();
-
-	if (!user) {
-		return res.json({ status: "error", error: "Usuário não encontrado" });
-	}
-
-	if (await bcrypt.compare(password, user.password)) {
-		const token = jwt.sign(
-			{
-				id: user._id,
-				username: user.username,
-			},
-			process.env.JWT_SECRET
-		);
-		return res.json({ status: "ok", data: token });
-	}
-
-	res.json({ status: "error", error: "Usuário ou senha inválidos" });
-});
-
-//Register User
-app.post("/auth/register", async (req, res) => {
-	const { username, password: PlainTextPassword } = req.body;
-
-	if (!username || typeof username !== "string") {
-		return res.json({ status: "error", error: "Nome de usuário inválido" });
-	}
-
-	if (!PlainTextPassword || typeof PlainTextPassword !== "string") {
-		return res.json({ status: "error", error: "Senha inválida" });
-	}
-
-	if (PlainTextPassword.length < 5) {
-		return res.json({
-			status: "error",
-			error: "A senha deve ter no mínimo 5 caracteres",
-		});
-	}
-
-	const password = await bcrypt.hash(PlainTextPassword, 10);
-
-	try {
-		const response = await User.create({
-			username,
-			password,
-		});
-		console.log("Usuário criado com sucesso", response);
-	} catch (error) {
-		if (error.code === 11000) {
-			//Usuário duplicado
-			return res.json({ status: "error", error: "Nome de usuário já existe" });
-		}
-		throw error;
-	}
-
-	res.json({ status: "ok" });
-});
-
-//Routes
-app.get("/", (req, res) => {
-	res.render("index", {
+// Get Routes
+app.get("/", requireAuth, (req, res) => {
+	res.render("Index", {
 		style: "home.css",
 	});
 });
 
-app.get("/login", (req, res) => {
-	res.render("login.hbs", {
-		style: "login.css",
-	});
-});
-
-app.get("/register", (req, res) => {
-	res.render("register.hbs", {
-		style: "register.css",
-	});
-});
-
-app.get("/series", (req, res) => {
-	res.render("series.hbs", {
-		style: "series.css",
-	});
-});
-
-app.get("/overview", (req, res) => {
-	res.render("overview.hbs", {
-		style: "overview.css",
-	});
-});
-
-app.get("/search", (req, res) => {
-	res.render("search.hbs", {
-		style: "search.css",
-	});
-});
-
-app.get("/:id", (req, res) => {
-	res.render("overview.hbs", {
-		style: "overview.css",
-	});
-});
-
-app.get("/:id/season/:id", (req, res) => {
-	res.render("season.hbs", {
-		style: "../../../css/season.css",
-	});
-});
-
-app.get("/:id/season/:id/episode/:id", (req, res) => {
-	res.render("episode.hbs", {
-		style: "../../../../../css/episode.css",
-	});
-});
-
-//Listen
-app.listen(port, () => {
-	console.log("Server up at " + port);
-});
+app.listen(3000, () => console.log("Server running"));

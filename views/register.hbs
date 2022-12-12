@@ -3,7 +3,7 @@
 		<img src="" alt="" />
 	</div>
 
-	<form id="register-form">
+	<form action="/register">
 		<div class="register-container">
 			<div class="register-card">
 				<div class="register-header">
@@ -14,12 +14,15 @@
 				<div class="register-texto">
 					<label form="usuario">Usuário</label>
 					<input type="text" id="username" placeholder="Usuário" required />
+					<div class="username error"></div>
 				</div>
 
 				<div class="register-texto">
 					<label form="senha">Senha</label>
 					<input type="password" id="password" placeholder="Senha" required />
+					<div class="password error"></div>
 				</div>
+
 				<input type="submit" value="Cadastre-se" />
 				<p class="register">Já é um usuário?
 					<a href="/login">Faça login</a></p>
@@ -27,4 +30,4 @@
 		</div>
 	</form>
 </main>
-<script src="/script/register.js"></script>
+<script type="text/javascript" src="/script/register.js"></script>

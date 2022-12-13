@@ -33,13 +33,6 @@ app.use(cookieParser());
 app.use(authRoutes);
 app.use(navRoutes);
 
-// Get Routes
-app.get("/", requireAuth, (req, res) => {
-	res.render("Index.hbs", {
-		style: "home.css",
-	});
-});
-
 // Listen
 app.listen(PORT, () => {
 	console.log(`Server running on port ${PORT}`);

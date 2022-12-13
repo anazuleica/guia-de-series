@@ -14,16 +14,10 @@ require("dotenv").config();
 dbUser = process.env.DB_USER;
 dbPass = process.env.DB_PASSWORD;
 
-const connectDB = async () => {
-	try {
-		await mongoose.connect(
-			`mongodb+srv://${dbUser}:${dbPass}@cluster0.iqzkooa.mongodb.net/?retryWrites=true&w=majority`
-		);
-		console.log("DB Connected");
-	} catch (err) {
-		console.log(err);
-	}
-};
+mongoose.connect(
+	`mongodb+srv://${dbUser}:${dbPass}@cluster0.iqzkooa.mongodb.net/?retryWrites=true&w=majority`,
+	() => console.log("DB Connected")
+);
 
 // Middleware
 app.engine("hbs", hbs.engine({ extname: "hbs" }));

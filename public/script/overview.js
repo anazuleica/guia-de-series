@@ -6,6 +6,9 @@ const seasons_url = "/season/";
 const img_url_original = "https://image.tmdb.org/t/p/original";
 const img_url_300 = "https://image.tmdb.org/t/p/w300/";
 
+//IMPORTS
+const User = require("../../models/Show");
+
 //FETCHING TV SHOW DETAILS
 const tvShow_id = location.pathname;
 
@@ -112,3 +115,5 @@ fetch(
 			`;
 		}
 	});
+
+// ADDING TO FAVORITES

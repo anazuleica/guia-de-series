@@ -22,10 +22,6 @@ async function start() {
 				console.log("DB Connected");
 			}
 		);
-
-		app.listen(PORT, () => {
-			console.log(`Server running on port ${PORT}`);
-		});
 	} catch (error) {
 		console.log(error);
 	}
@@ -50,4 +46,9 @@ app.get("/", requireAuth, (req, res) => {
 	res.render("Index", {
 		style: "home.css",
 	});
+});
+
+// Listen
+app.listen(PORT, () => {
+	console.log(`Server running on port ${PORT}`);
 });

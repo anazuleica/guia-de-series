@@ -6,16 +6,30 @@ const authRoutes = require("./routes/authRoutes");
 const navRoutes = require("./routes/navRoutes");
 const cookieParser = require("cookie-parser");
 const { requireAuth } = require("./middlewares/authMiddleware");
+const PORT = process.env.PORT || 3000;
 
 require("dotenv").config();
 
 // Connect to DB
 dbUser = process.env.DB_USER;
 dbPass = process.env.DB_PASSWORD;
-mongoose.connect(
-	`mongodb+srv://${dbUser}:${dbPass}@cluster0.iqzkooa.mongodb.net/?retryWrites=true&w=majority`,
-	() => console.log("DB Connected")
-);
+
+async function start() {
+	try {
+		await mongoose.connect(
+			`mongodb+srv://${dbUser}:${dbPass}@cluster0.iqzkooa.mongodb.net/?retryWrites=true&w=majority`,
+			() => {
+				console.log("DB Connected");
+			}
+		);
+
+		app.listen(PORT, () => {
+			console.log(`Server running on port ${PORT}`);
+		});
+	} catch (error) {
+		console.log(error);
+	}
+}
 
 // Middleware
 app.engine("hbs", hbs.engine({ extname: "hbs" }));
@@ -37,7 +51,3 @@ app.get("/", requireAuth, (req, res) => {
 		style: "home.css",
 	});
 });
-
-// Listen
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

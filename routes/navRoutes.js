@@ -3,12 +3,6 @@ const { requireAuth } = require("../middlewares/authMiddleware");
 
 const router = Router();
 
-router.get("/", requireAuth, (req, res) => {
-	res.render("Index.hbs", {
-		style: "home.css",
-	});
-});
-
 router.get("/series", requireAuth, (req, res) => {
 	res.render("series.hbs", {
 		style: "series.css",

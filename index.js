@@ -35,7 +35,7 @@ app.use(navRoutes);
 
 // Get Route
 app.get("/", requireAuth, (req, res) => {
-	res.render("Index", {
+	res.render("index", {
 		style: "home.css",
 	});
 });

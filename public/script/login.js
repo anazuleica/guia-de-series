@@ -61,9 +61,7 @@ form.addEventListener("submit", async (e) => {
 		if (data.errors) {
 			usernameError.textContent = data.errors.username;
 			passwordError.textContent = data.errors.password;
-		}
-
-		if (data.user) {
+		} else {
 			location.assign("/");
 		}
 	} catch (err) {

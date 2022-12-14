@@ -15,7 +15,7 @@ dbUser = process.env.DB_USER;
 dbPass = process.env.DB_PASSWORD;
 
 mongoose.connect(
-	`mongodb+srv://${dbUser}:${dbPass}@cluster0.iqzkooa.mongodb.net/?retryWrites=true&w=majority`,
+	`mongodb+srv://${dbUser}:${dbPass}@rest.35bcg.mongodb.net/?retryWrites=true&w=majority`,
 	() => console.log("DB Connected")
 );
 

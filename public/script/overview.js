@@ -18,8 +18,8 @@ fetch(
 )
 	.then((res) => res.json())
 	.then((data) => {
-		console.log(data);
 		setupCard(data);
+		addFavorites(data);
 	});
 
 //ADD INFO TO HTML POSTER
@@ -61,7 +61,7 @@ const setupCard = (data) => {
 	}
 };
 
-//FETCHING TV SHOW CAST
+//FETCHING TV SHOW CAST & RECOMMENDATIONS
 fetch(
 	`${base_url}${tvShow_id}/credits${language_url}` +
 		new URLSearchParams({
@@ -113,4 +113,25 @@ fetch(
 		}
 	});
 
-// ADDING TO FAVORITES
+// ADD TO FAVORITES
+const addFavorites = (data) => {
+	const button = document.getElementById("fav-btn");
+
+	button.addEventListener("click", async (e) => {
+		const id = data.id;
+		const name = data.name;
+		const owner = document.cookie.split("%22")[1];
+
+		const res = await fetch("/favs", {
+			method: "POST",
+			body: JSON.stringify({ id, name, owner }),
+			headers: { "Content-Type": "application/json" },
+		}).then((res) => res.json());
+
+		if (res.status === "ok") {
+			alert("Adicionada às favoritas!");
+		} else {
+			alert(res.error);
+		}
+	});
+};

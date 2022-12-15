@@ -4,6 +4,7 @@ const app = express();
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
 const navRoutes = require("./routes/navRoutes");
+const favRoutes = require("./routes/favRoutes");
 const cookieParser = require("cookie-parser");
 const { requireAuth } = require("./middlewares/authMiddleware");
 const PORT = process.env.PORT || 3000;
@@ -32,6 +33,7 @@ app.use(cookieParser());
 // Import Routes
 app.use(authRoutes);
 app.use(navRoutes);
+app.use(favRoutes);
 
 // Get Route
 app.get("/", requireAuth, (req, res) => {
